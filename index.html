@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>速さの実験カメラ</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><div class="badge">SCIENCE LAB / 理科の実験</div><h1>速さの実験カメラ</h1><p>動きを撮る。時間を測る。速さを見つける。</p></header>
+<main>
+<section class="camera panel"><div class="section-head"><h2>01　撮影</h2><span id="status" role="status">カメラを準備してください</span></div>
+<div class="screen"><video id="live" autoplay muted playsinline></video><canvas id="canvas" hidden></canvas><div id="empty">カメラを起動して、実験を始めましょう</div><div id="clock">0.00 <small>秒</small></div><span id="recording" hidden>● REC</span></div>
+<div class="controls"><button id="open" class="primary">カメラを起動</button><select id="facing" aria-label="カメラの向き"><option value="environment">背面カメラ</option><option value="user">前面カメラ</option></select><button id="start" disabled>● 録画開始</button><button id="stop" disabled>■ 録画終了</button><button id="close" disabled>カメラを閉じる</button></div>
+<p id="message" role="alert"></p><p class="note">音声は録音しません。映像はこの端末内で処理されます。</p></section>
+<section class="panel"><div class="section-head"><h2>02　映像で時間を測る</h2><a id="download" hidden>動画を保存 ↓</a></div>
+<video id="playback" controls playsinline></video><p id="reviewHint" class="note">録画が終わると、ここで映像を確認できます。</p>
+<div class="controls"><button id="back" disabled>−0.01秒</button><button id="forward" disabled>＋0.01秒</button><output id="position">0.00 秒</output><button id="markStart" disabled>開始点を決める</button><button id="markEnd" disabled>終了点を決める</button></div>
+<p class="note">映像を一時停止し、物体が目印を通る時刻を選びます。0.01秒の移動で画が変わらない場合は、同じフレームを表示しています。</p></section>
+<section class="panel calculation"><div><h2>03　速さを計算する</h2><p>目印の間の距離を入力しましょう。</p><div class="distance"><label for="distance">移動した距離</label><input id="distance" type="number" min="0" step="any" placeholder="例：1.5"><select id="unit" aria-label="距離の単位"><option value="m">m</option><option value="cm">cm</option></select></div><div class="times"><span>開始 <strong id="from">—</strong></span><span>終了 <strong id="to">—</strong></span><span>かかった時間 <strong id="elapsed">—</strong></span></div><p id="calcHint" role="status">開始点と終了点を選び、距離を入力してください。</p></div><div class="result"><span>平均の速さ</span><output id="speed">— <small>m/s</small></output><p id="formula">速さ ＝ 距離 ÷ 時間</p></div></section>
+<aside><strong>測定のヒント</strong><p>カメラを固定し、進行方向を横から撮影します。距離の目印を先に置くと測定しやすくなります。秒数は小数第2位まで表示しますが、実際の時間の分解能は撮影・録画のフレーム間隔に依存します（30fpsなら約0.033秒）。</p></aside>
+</main><footer>速さの実験カメラ · 撮影前に、映る人の許可を取りましょう。</footer><script src="app.js"></script>
+</body></html>
